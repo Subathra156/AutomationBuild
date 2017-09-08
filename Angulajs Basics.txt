@@ -1,0 +1,127 @@
+AngularJS is a JavaScript framework
+can be added to an HTML page with a <script> tag
+attributes with Directives
+binds data to HTML with Expressions.
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
+
+
+View, which is the HTML.
+Model, which is the data available for the current view.
+Controller, which is the JavaScript function that makes/changes/removes/controls the data.
+
+Then the scope is the Model.
+
+The scope is a JavaScript object with properties and methods, which are available for both the view and the controller.
+
+ng-directives 
+ng-model
+ng-bind
+ng-init
+{{ expression }}
+
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    Name: <input ng-model="name">
+    <h1>You entered: {{name}}</h1>
+</div>
+
+<div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
+
+<p>The name is <span ng-bind="person.lastName"></span></p>
+
+</div>
+
+
+ng-route
+
+
+
+
+
+<div ng-app="" ng-init="points=[1,15,19,2,40]">
+
+<p>The third result is {{ points[2] }}</p>
+
+</div>
+
+Modules
+
+
+<script>
+
+var app = angular.module("myApp", []);
+
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+
+</script>
+
+
+<div ng-app="myApp" ng-controller="myCtrl">
+{{ firstName + " " + lastName }}
+</div>
+
+<script src="myApp.js"></script>
+<script src="myCtrl.js"></script>
+
+</body>
+</html>
+
+
+Global functions
+
+
+<form ng-app="" name="myForm" ng-init="myText = 'post@myweb.com'">
+    Email:
+    <input type="email" name="myAddress" ng-model="myText" required>
+    <h1>Status</h1>
+    {{myForm.myAddress.$valid}}
+    {{myForm.myAddress.$dirty}}
+    {{myForm.myAddress.$touched}}
+</form>
+
+
+ng-repeat
+
+
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body ng-app="myApp">
+
+<p>The rootScope's favorite color:</p>
+<h1>{{color}}</h1>
+
+<div ng-controller="myCtrl">
+
+<p>The scope of the controller's favorite color:</p>
+<h1>{{color}}</h1>
+
+</div>
+
+<p>The rootScope's favorite color is still:</p>
+<h1>{{color}}</h1>
+
+<script>
+var app = angular.module('myApp', []);
+app.run(function($rootScope) {
+    $rootScope.color = 'blue';
+});
+app.controller('myCtrl', function($scope) {
+    $scope.color = "red";
+});
+</script>
+
+<p>Notice that controller's color variable does not overwrite the rootScope's color value.</p>
+
+</body>
+</html>
+
+
+
+filter
+
+ng-click
